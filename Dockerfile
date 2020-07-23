@@ -9,11 +9,11 @@ RUN apt-get update -y && \
 	docker-php-ext-install gd && \
 	docker-php-ext-install mbstring && \
 	docker-php-ext-install fileinfo && \
-	curl -sSL https://downloads.sourceforge.net/project/mantisbt/mantis-stable/2.24.1/mantisbt-2.24.1.tar.gz | tar xzC /tmp && \
+	curl -sSL https://github.com/mantisbt/mantisbt/archive/release-2.24.1.tar.gz | tar xzC /tmp && \
 	mv mantisbt-*/* /var/www/html && \
 	chown -R www-data:www-data /var/www/html && \
 	apt-get -y autoremove && \
-    	rm -rf /*.zip /tmp/* /var/tmp/* /var/lib/apt/lists/* && \
+	rm -rf /*.zip /tmp/* /var/tmp/* /var/lib/apt/lists/* && \
 	mkdir /config && \
 	cp /var/www/html/config/* /config && \
 	rm -rf /var/www/html/config && \

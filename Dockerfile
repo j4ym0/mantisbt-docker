@@ -5,7 +5,7 @@ EXPOSE 80
 VOLUME /config
 
 RUN apt-get update -y && \
-	apt-get install -y libpng-dev libonig-dev && \
+	apt-get install --no-install-recommends -y libpng-dev libonig-dev && \
 	cd /tmp && \
 	docker-php-ext-install mysqli && \
 	docker-php-ext-install gd && \

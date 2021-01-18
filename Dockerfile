@@ -2,8 +2,6 @@ FROM php:apache
 
 EXPOSE 80
 
-VOLUME /config
-
 RUN apt-get update -y && \
 	apt-get install --no-install-recommends -y libpng-dev libonig-dev && \
 	cd /tmp && \
@@ -16,6 +14,7 @@ RUN apt-get update -y && \
 	chown -R www-data:www-data /var/www/html && \
 	apt-get -y autoremove && \
 	rm -rf /*.zip /tmp/* /var/tmp/* /var/lib/apt/lists/* && \
+	mkdir /config && \
 	cp /var/www/html/config/* /config && \
 	rm -rf /var/www/html/config && \
 	ln -s /config /var/www/html	&& \

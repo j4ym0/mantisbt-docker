@@ -16,7 +16,6 @@ RUN apt-get update -y && \
 	chown -R www-data:www-data /var/www/html && \
 	apt-get -y autoremove && \
 	rm -rf /*.zip /tmp/* /var/tmp/* /var/lib/apt/lists/* && \
-	mkdir /config && \
 	cp /var/www/html/config/* /config && \
 	rm -rf /var/www/html/config && \
 	ln -s /config /var/www/html	&& \

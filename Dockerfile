@@ -11,7 +11,8 @@ RUN apt-get update -y && \
 	docker-php-ext-install gd && \
 	docker-php-ext-install mbstring && \
 	docker-php-ext-install fileinfo && \
-	curl -sSL https://github.com/mantisbt/mantisbt/archive/release-2.25.1.tar.gz | tar xzC /tmp && \
+	wget -O mantisbt.tar.gz https://sourceforge.net/projects/mantisbt/files/mantis-stable/2.25.1/mantisbt-2.25.1.tar.gz/download && \
+	tar xzC mantisbt.tar.gz /tmp && \
 	mv mantisbt-*/* /var/www/html && \
 	chown -R www-data:www-data /var/www/html && \
 	apt-get -y autoremove && \

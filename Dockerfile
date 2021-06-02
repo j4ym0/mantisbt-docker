@@ -12,13 +12,12 @@ RUN apt-get update -y && \
 	docker-php-ext-install mbstring && \
 	docker-php-ext-install fileinfo && \
 	wget -O mantisbt.tar.gz https://sourceforge.net/projects/mantisbt/files/mantis-stable/2.25.1/mantisbt-2.25.1.tar.gz/download && \
-	tar xzC mantisbt.tar.gz /tmp && \
+	tar xvzf mantisbt.tar.gz -C /tmp && \
 	mv mantisbt-*/* /var/www/html && \
 	chown -R www-data:www-data /var/www/html && \
 	apt-get -y remove wget && \
 	apt-get -y autoremove && \
 	rm -rf /*.zip /tmp/* /var/tmp/* /var/lib/apt/lists/* && \
-	mkdir /config && \
 	cp /var/www/html/config/* /config && \
 	rm -rf /var/www/html/config && \
 	ln -s /config /var/www/html	&& \

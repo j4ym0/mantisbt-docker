@@ -5,7 +5,7 @@ EXPOSE 80
 VOLUME /config
 
 RUN apt-get update -y && \
-	apt-get install --no-install-recommends -y libpng-dev libonig-dev && \
+	apt-get install --no-install-recommends -y wget libpng-dev libonig-dev && \
 	cd /tmp && \
 	docker-php-ext-install mysqli && \
 	docker-php-ext-install gd && \
@@ -15,6 +15,7 @@ RUN apt-get update -y && \
 	tar xzC mantisbt.tar.gz /tmp && \
 	mv mantisbt-*/* /var/www/html && \
 	chown -R www-data:www-data /var/www/html && \
+	apt-get -y remove wget && \
 	apt-get -y autoremove && \
 	rm -rf /*.zip /tmp/* /var/tmp/* /var/lib/apt/lists/* && \
 	mkdir /config && \

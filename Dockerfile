@@ -27,8 +27,8 @@ COPY ./httpd.conf /etc/apache2/sites-available/000-default.conf
 
 COPY ./php.ini $PHP_INI_DIR/conf.d/
 
-COPY ./cleanup.sh ./entrypoint.sh /
+COPY ./entrypoint.sh /
 
-RUN chmod 500 /entrypoint.sh /cleanup.sh
+RUN chmod 500 /entrypoint.sh
 
 ENTRYPOINT /entrypoint.sh

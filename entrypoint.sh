@@ -1,34 +1,37 @@
 #!/bin/bash
 
-printf "Checking for config_inc.php..."
+printf "Checking for config_inc.php...\n"
 if [ -f "/config/config_inc.php" ]
 then
 	 if [ ! -f "/install-run" ]
 	 then
-  	 printf "creating tmpory install file for first fun\n"
+  	 printf "Creating tmp install file for first fun\n"
 		 touch /install-run
+		 printf "!!! ADMIN FOLDER WILL BE REMOVED WHEN CONTAINER IS RESTARTED \n"
 	 else
 		 chown www-data:www-data /config/config_inc.php
-		 printf "Found\n"
-		 printf "  Checking for instalation folder..."
+		 printf "  Found\n"
+		 printf "Checking for instalation folder...\n"
 		 if [ -d "/var/www/html/admin" ]
 		 then
-		   printf "Found\n"
-		   printf "    Atempting to remove..."
+		   printf "  Found\n"
+		   printf "Atempting to remove admin folder...\n"
 		   rm -rf /var/www/html/admin
 		   if [ -d "/var/www/html/admin" ]
 		   then
-  			 printf "Failed\n"
+  			 printf "  Failed\n"
   		 else
-  			 printf "Removed\n"
+  			 printf "  Removed\n"
   		 fi
   	 else
-  		 printf "Missing - Good\n"
+  		 printf "  Missing - Good\n"
   	 fi
 	 fi
 else
-	printf "Missing\n"
+	touch /install-run
+	printf "  Missing persistent config file\n"
 	printf "Please use setup /admin/install.php \n"
+	printf "!!! ADMIN FOLDER WILL BE REMOVED WHEN CONTAINER IS RESTARTED \n"
 fi
 
 printf "\n\n"

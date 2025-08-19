@@ -9,7 +9,7 @@ RUN apt-get update -y && \
 	docker-php-ext-install gd && \
 	docker-php-ext-install mbstring && \
 	docker-php-ext-install fileinfo && \
-	wget -O mantisbt.tar.gz https://sourceforge.net/projects/mantisbt/files/mantis-stable/2.25.7/mantisbt-2.25.7.tar.gz/download && \
+	wget -O mantisbt.tar.gz https://sourceforge.net/projects/mantisbt/files/mantis-stable/2.25.7/mantisbt-2.27.1.tar.gz/download && \
 	tar xvzf mantisbt.tar.gz -C /tmp && \
 	mv mantisbt-*/* /var/www/html && \
 	chown -R www-data:www-data /var/www/html && \
